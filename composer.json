@@ -1,0 +1,16 @@
+{
+    "name": "dbseller/aluraplay",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Dbseller\\Aluraplay\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Pedro Schinke",
+            "email": "pedro.schinke@outlook.com"
+        }
+    ],
+    "require": {}
+}
