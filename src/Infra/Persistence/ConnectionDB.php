@@ -10,8 +10,8 @@ class ConnectionDB
     public static function createConnection(): PDO
     {
         $host = 'localhost';
-        $dbname = 'serenatto';
-        $username = 'dbseller';
+        $dbname = 'aluraplay';
+        $username = 'postgres';
         $password = 'halegria';
         $port = '5432'; 
 
