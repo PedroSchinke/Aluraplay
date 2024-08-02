@@ -1,6 +1,6 @@
 <?php
 
-namespace Dbseller\Aluraplay\Helpers;
+namespace Dbseller\Aluraplay\Domain\Helpers;
 
 class StringHelper
 {
