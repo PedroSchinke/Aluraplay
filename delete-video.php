@@ -1,6 +1,8 @@
 <?php
 
+use Dbseller\Aluraplay\Domain\Model\Video;
 use Dbseller\Aluraplay\Infra\Persistence\ConnectionDB;
+use Dbseller\Aluraplay\Infra\Repository\PdoVideoRepository;
 
 require 'vendor/autoload.php';
 
@@ -8,13 +10,10 @@ $pdo = ConnectionDB::createConnection();
 
 $id = $_GET['id'];
 
-$sql = "DELETE FROM videos WHERE id = ?";
-$statement = $pdo->prepare($sql);
-$statement->bindValue(1, $id);
-$statement->execute();
+$videoRepository = new PdoVideoRepository($pdo);
 
-if ($statement->execute() === false) {
-    header('Location: /index.php?sucesso=0');
+if ($videoRepository->deleteVideo($id) === false) {
+    header('Location: /?sucesso=0');
 } else {
-    header('Location: /index.php?sucesso=1');
+    header('Location: /?sucesso=1');
 }

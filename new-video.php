@@ -1,6 +1,8 @@
 <?php
 
 use Dbseller\Aluraplay\Infra\Persistence\ConnectionDB;
+use Dbseller\Aluraplay\Infra\Repository\PdoVideoRepository;
+use Dbseller\Aluraplay\Domain\Model\Video;
 
 require 'vendor/autoload.php';
 
@@ -8,23 +10,19 @@ $pdo = ConnectionDB::createConnection();
 
 $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
 if ($url === false) {
-    header('Location: /index.php?sucesso=0');
+    header('Location: /?sucesso=0');
     exit();
 }
-$titulo = filter_input(INPUT_POST, 'titulo');
-if ($titulo === false) {
-    header('Location: /index.php?sucesso=0');
+$title = filter_input(INPUT_POST, 'titulo');
+if ($title === false) {
+    header('Location: /?sucesso=0');
     exit();
 }
 
-$sql = 'INSERT INTO videos (id, url, title) VALUES (?, ?, ?)';
-$statement = $pdo->prepare($sql);
-$statement->bindValue(2, $url);
-$statement->bindValue(3, $title);
-$statement->bindValue(1, 1);
+$videoRepository = new PdoVideoRepository($pdo);
 
-if ($statement->execute() === false) {
-    header('Location: /index.php?sucesso=0');
+if ($videoRepository->saveVideo(new Video(null, $url, $title)) === false) {
+    header('Location: /?sucesso=0');
 } else {
-    header('Location: /index.php?sucesso=1');
+    header('Location: /?sucesso=1');
 }
