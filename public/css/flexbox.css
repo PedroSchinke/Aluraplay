@@ -30,7 +30,8 @@
 
 .descricao-video {
     margin-top: 1rem;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     text-align: start;
     column-gap: 1rem;
     row-gap: 10px;
@@ -45,11 +46,13 @@
     grid-area: 1 / 2 / 2 / 3;
     font-weight: 700;
     color: #444444;
+    font-size: 1.2rem;
 }
 
 .descricao-video .acoes-video {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 10px;
 }
 
 .descricao-video .acoes-video a {
