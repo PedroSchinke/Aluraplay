@@ -6,7 +6,7 @@ namespace Dbseller\Aluraplay\Controller;
 
 use Dbseller\Aluraplay\Infra\Repository\PdoVideoRepository;
 
-class VideoListController implements Controller
+class VideoListController extends ControllerWithHtml implements Controller
 {
     private PdoVideoRepository $videoRepository;
 
@@ -18,6 +18,10 @@ class VideoListController implements Controller
     public function processRequest(): void
     {
         $videoList = $this->videoRepository->getAllVideos();
-        require_once __DIR__ . '/../../views/video-list.php';
+        
+        $this->renderTemplate(
+            'video-list',
+            ['videoList' => $videoList]
+        );
     }
 }

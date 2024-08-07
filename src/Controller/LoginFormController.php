@@ -4,7 +4,7 @@ namespace Dbseller\Aluraplay\Controller;
 
 use Dbseller\Aluraplay\Controller\Controller;
 
-class LoginFormController implements Controller
+class LoginFormController extends ControllerWithHtml implements Controller
 {
     public function processRequest(): void
     {   
@@ -13,6 +13,8 @@ class LoginFormController implements Controller
             return;
         }
 
-        require_once __DIR__ . '/../../views/login-form.php';
+        $this->renderTemplate(
+            'login-form',
+        );
     }
 }
