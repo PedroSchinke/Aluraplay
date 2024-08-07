@@ -6,10 +6,12 @@ namespace Dbseller\Aluraplay\Controller;
 
 use PDO;
 use Dbseller\Aluraplay\Controller\Controller;
+use Dbseller\Aluraplay\Traits\FlashMessageTrait;
 use Dbseller\Aluraplay\Infra\Persistence\ConnectionDB;
 
 class LoginController implements Controller
 {
+    use FlashMessageTrait;
     private PDO $pdo;
 
     public function __construct()
@@ -34,10 +36,18 @@ class LoginController implements Controller
         $correctPassword = password_verify($password, $userData['password'] ?? '');
 
         if ($correctPassword) {
+            if (password_needs_rehash($userData['password'], PASSWORD_ARGON2ID)) {
+                $statement = $this->pdo->prepare('UPDATE users SET password = ? WHERE id = ?');
+                $statement->bindValue(1, password_hash($password, PASSWORD_ARGON2ID));
+                $statement->bindValue(2, $userData['id']);
+                $statement->execute();
+            }
+
             $_SESSION['logado'] = true;
             header('Location: /');
         } else {
-            header('Location: /login?sucesso=0');
+            $this->addErrorMessage('Usuário ou senha inválidos');
+            header('Location: /login');
         }
     }
 }
