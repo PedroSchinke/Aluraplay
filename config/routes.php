@@ -9,4 +9,7 @@ return [
     'GET|/edit-video' => \Dbseller\Aluraplay\Controller\VideoFormController::class,
     'POST|/edit-video' => \Dbseller\Aluraplay\Controller\EditVideoController::class,
     'GET|/delete-video' => \Dbseller\Aluraplay\Controller\DeleteVideoController::class,
+    'GET|/login' => \Dbseller\Aluraplay\Controller\LoginFormController::class,
+    'POST|/login' => \Dbseller\Aluraplay\Controller\LoginController::class,
+    'GET|/logout' => \Dbseller\Aluraplay\Controller\LogoutController::class,
 ];
