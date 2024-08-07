@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Dbseller\Aluraplay\Helper;
+namespace Dbseller\Aluraplay\Traits;
 
 trait FlashMessageTrait
 {
