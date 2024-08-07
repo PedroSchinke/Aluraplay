@@ -12,4 +12,6 @@ return [
     'GET|/login' => \Dbseller\Aluraplay\Controller\LoginFormController::class,
     'POST|/login' => \Dbseller\Aluraplay\Controller\LoginController::class,
     'GET|/logout' => \Dbseller\Aluraplay\Controller\LogoutController::class,
+    'GET|/videos-json' => \Dbseller\Aluraplay\Controller\JsonVideoListController::class,
+    'GET|/videos' => \Dbseller\Aluraplay\Controller\NewJsonVideoController::class,
 ];
