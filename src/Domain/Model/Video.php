@@ -7,6 +7,7 @@ class Video
     private ?int $id;
     private string $url;
     private string $title;
+    private ?string $filePath = null;
 
     public function __construct(?int $id, string $url, string $title)
     {
@@ -37,5 +38,15 @@ class Video
     public function getTitle(): string
     {
         return $this->title;
+    }
+
+    public function getFilePath(): ?string
+    {
+        return $this->filePath;
+    }
+
+    public function setFilePath(string $filePath): void 
+    {
+        $this->filePath = $filePath;
     }
 }
