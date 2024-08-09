@@ -6,8 +6,12 @@ namespace Dbseller\Aluraplay\Controller;
 
 use Dbseller\Aluraplay\Domain\Model\Video;
 use Dbseller\Aluraplay\Infra\Repository\PdoVideoRepository;
+use Nyholm\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class JsonVideoListController implements Controller
+class JsonVideoListController implements RequestHandlerInterface
 {
     private PdoVideoRepository $videoRepository;
 
@@ -16,15 +20,18 @@ class JsonVideoListController implements Controller
         $this->videoRepository = $videoRepository;
     }
 
-    public function processRequest(): void
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $videoList = array_map(function (Video $video): array {
             return [
-                    'url' => $video->getUrl(),
-                    'title' => $video->getTitle(),
-                    'file_path' => '/img/uploads/' . $video->getFilePath(),
+                'url' => $video->getUrl(),
+                'title' => $video->getTitle(),
+                'file_path' => '/img/uploads/' . $video->getFilePath(),
             ];
         }, $this->videoRepository->getAllVideos());
-        echo json_encode($videoList);
+
+        return new Response(200, [
+            'Content-Type' => 'application/json'
+        ], json_encode($videoList));
     }
 }

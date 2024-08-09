@@ -6,9 +6,15 @@ namespace Dbseller\Aluraplay\Controller;
 
 use Dbseller\Aluraplay\Infra\Repository\PdoVideoRepository;
 use Dbseller\Aluraplay\Domain\Model\Video;
+use Dbseller\Aluraplay\Traits\HtmlRendererTrait;
+use Nyholm\Psr7\Response;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
-class VideoFormController extends ControllerWithHtml implements Controller
+class VideoFormController implements RequestHandlerInterface
 {
+    use HtmlRendererTrait;
     private PdoVideoRepository $videoRepository;
 
     public function __construct(PdoVideoRepository $videoRepository)
@@ -16,9 +22,11 @@ class VideoFormController extends ControllerWithHtml implements Controller
         $this->videoRepository = $videoRepository;
     }
 
-    public function processRequest(): void
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+        $queryParams = $request->getQueryParams();
+
+        $id = filter_var($queryParams['id'], FILTER_VALIDATE_INT);
         /** @var ?Video $video */
         $video = null;
 
@@ -26,9 +34,9 @@ class VideoFormController extends ControllerWithHtml implements Controller
             $video = $this->videoRepository->getVideo($id);
         }
 
-        $this->renderTemplate(
+        return new Response(200, [], $this->renderTemplate(
             'video-form',
             ['video' => $video]
-        );
+        ));
     }
 }
