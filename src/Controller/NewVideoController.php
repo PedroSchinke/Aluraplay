@@ -7,7 +7,7 @@ namespace Dbseller\Aluraplay\Controller;
 use Dbseller\Aluraplay\Domain\Helpers\StringHelper;
 use Dbseller\Aluraplay\Domain\Model\Video;
 use Dbseller\Aluraplay\Traits\FlashMessageTrait;
-use Dbseller\AluraPlay\Infra\Repository\PdoVideoRepository;
+use Dbseller\Aluraplay\Infra\Repository\PdoVideoRepository;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
