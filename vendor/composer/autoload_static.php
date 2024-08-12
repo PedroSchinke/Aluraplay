@@ -10,6 +10,7 @@ class ComposerStaticInita25695e8e6f6fd0f4f8cbcb168b7533f
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
+        'b33e3d135e5d9e47d845c576147bda89' => __DIR__ . '/..' . '/php-di/php-di/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -25,11 +26,21 @@ class ComposerStaticInita25695e8e6f6fd0f4f8cbcb168b7533f
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
             'PhpOption\\' => 10,
+            'PhpDocReader\\' => 13,
         ),
         'N' => 
         array (
             'Nyholm\\Psr7\\' => 12,
             'Nyholm\\Psr7Server\\' => 18,
+        ),
+        'L' => 
+        array (
+            'League\\Plates\\' => 14,
+            'Laravel\\SerializableClosure\\' => 28,
+        ),
+        'I' => 
+        array (
+            'Invoker\\' => 8,
         ),
         'G' => 
         array (
@@ -39,6 +50,7 @@ class ComposerStaticInita25695e8e6f6fd0f4f8cbcb168b7533f
         array (
             'Dotenv\\' => 7,
             'Dbseller\\Aluraplay\\' => 19,
+            'DI\\' => 3,
         ),
     );
 
@@ -72,6 +84,10 @@ class ComposerStaticInita25695e8e6f6fd0f4f8cbcb168b7533f
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
         ),
+        'PhpDocReader\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-di/phpdoc-reader/src/PhpDocReader',
+        ),
         'Nyholm\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/nyholm/psr7/src',
@@ -79,6 +95,18 @@ class ComposerStaticInita25695e8e6f6fd0f4f8cbcb168b7533f
         'Nyholm\\Psr7Server\\' => 
         array (
             0 => __DIR__ . '/..' . '/nyholm/psr7-server/src',
+        ),
+        'League\\Plates\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/plates/src',
+        ),
+        'Laravel\\SerializableClosure\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/serializable-closure/src',
+        ),
+        'Invoker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-di/invoker/src',
         ),
         'GrahamCampbell\\ResultType\\' => 
         array (
@@ -91,6 +119,10 @@ class ComposerStaticInita25695e8e6f6fd0f4f8cbcb168b7533f
         'Dbseller\\Aluraplay\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'DI\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-di/php-di/src',
         ),
     );
 
