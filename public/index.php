@@ -1,15 +1,12 @@
 <?php
 
 declare(strict_types=1);
+ini_set('display_errors', '1');
+error_reporting(E_ALL);
 
 use Dbseller\Aluraplay\Controller\Error404Controller;
-use Dbseller\Aluraplay\Infra\Persistence\ConnectionDB;
-use Dbseller\Aluraplay\Infra\Repository\PdoVideoRepository;
 
 require_once __DIR__ . '/../vendor/autoload.php';
-
-$pdo = ConnectionDB::createConnection();
-$videoRepository = new PdoVideoRepository($pdo);
 
 $routes = require_once __DIR__ . '/../config/routes.php';
 /** @var \Psr\Container\ContainerInterface $diContainer */
@@ -31,7 +28,6 @@ $key = "$httpMethod|$pathInfo";
 
 if (array_key_exists($key, $routes)) {
     $controllerClass = $routes["$httpMethod|$pathInfo"];
-
     $controller = $diContainer->get($controllerClass);
 } else {
     $controller = new Error404Controller();
