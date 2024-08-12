@@ -1,8 +1,4 @@
-<?php
-
-require_once __DIR__ . '/html-start.php';
-
-?>
+<?php $this->layout('layout'); ?>
 
 <main class="container">
 
@@ -36,7 +32,3 @@ require_once __DIR__ . '/html-start.php';
     </form>
 
 </main>
-
-<?php 
-
-require_once __DIR__ . '/html-end.php';

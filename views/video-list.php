@@ -1,10 +1,9 @@
 <?php
 
-require_once __DIR__ . '/html-start.php';
+$this->layout('layout');
+/** @var \Dbseller\Aluraplay\Domain\Model\Video[] $videoList */
 
-?>
-
-<ul class="videos__container">
+?><ul class="videos__container">
     <?php foreach ($videoList as $video): ?>
     <li class="videos__item">
         <?php if ($video->getFilePath() !== null): ?>
@@ -35,7 +34,3 @@ require_once __DIR__ . '/html-start.php';
     </li>
     <?php endforeach; ?>
 </ul>
-
-<?php 
-
-require_once __DIR__ . '/html-end.php';
